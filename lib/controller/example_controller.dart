@@ -1,12 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
+import 'package:latihan/routes/routes.dart';
 
-class ExampleController extends GetxController{
-  
-  var isMobile = true.obs;
+class ExampleController extends GetxController {
+  @override
+  void onInit() {
+    super.onInit();
+    print("🟢 ExampleController initialized");
 
-  void updateLayout(BoxConstraints constraints){
-    isMobile.value = constraints.maxWidth < 600;
+    Future.delayed(const Duration(seconds: 3), () {
+      print("➡️ Navigating to loginapi...");
+      Get.offAllNamed(AppRoutes.loginapi);
+    });
   }
 }

@@ -1,13 +1,11 @@
-import 'package:latihan/pages/widescreen/example_widescreendart';
-
-class AppRoutes {
-  static const String calculator = '/calculator';
-  static const String footballPlayers = '/footballPlayers';
-  static const String footballEdit = '/footballEdit';
-  static const String mainPage = '/mainPage';
-  static const String profile = '/profile';
-  static const String contact = '/contact';
-  static const String splashscreen = '/splashscreen';
+abstract class AppRoutes {
+  static const splashscreen = '/splashscreen';
   static const examplescreen = '/examplescreen';
-
+  static const loginapi = '/loginapi';
+  static const calculator = '/calculator';
+  static const contact = '/contact';
+  static const profile = '/profile';
+  static const footballPlayers = '/footballPlayers';
+  static const footballEdit = '/footballEdit';
+  static const mainPage = '/mainPage';
 }

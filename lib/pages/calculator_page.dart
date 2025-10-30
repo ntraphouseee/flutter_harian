@@ -9,9 +9,7 @@ import 'package:latihan/binding/contact_binding.dart'; // Import ContactBinding
 class CalculatorPage extends StatelessWidget {
   CalculatorPage({super.key});
 
-  final CalculatorController calculatorController = Get.put(
-    CalculatorController(),
-  );
+  final CalculatorController calculatorController = Get.find();
   
   final BottomNavController bottomNavController = Get.put(
     BottomNavController(),
@@ -111,7 +109,7 @@ class CalculatorPage extends StatelessWidget {
             _buildDrawerItem(
               icon: Icons.person_outline,
               title: 'Profile',
-              page: const ProfilePage(), 
+              page: ProfilePage(), 
             ),
           ],
         ),

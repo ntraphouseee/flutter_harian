@@ -1,30 +1,24 @@
-// lib/controller/splashscreen_controller.dart (Contoh)
-
 import 'package:get/get.dart';
 import 'package:latihan/routes/routes.dart';
-import 'package:latihan/main.dart'; // <<< PASTI ADA
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashscreenController extends GetxController {
-  
   @override
   void onInit() {
     super.onInit();
-    // Jika checkLogin() crash, whitescreen bisa muncul
-    checkLogin(); 
+    navigateFromSplash();
   }
 
-  Future<void> checkLogin() async {
+  Future<void> navigateFromSplash() async {
     await Future.delayed(const Duration(seconds: 3));
-    
-    String? savedUsername = prefs.getString('username'); // Menggunakan prefs global
-    
-    if (savedUsername != null) {
-      // Navigasi ke Halaman Kalkulator jika sudah login
+
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token');
+
+    if (token != null && token.isNotEmpty) {
       Get.offAllNamed(AppRoutes.calculator);
     } else {
-      // Simpan data dan navigasi ke Kalkulator (Simulasi Login)
-      prefs.setString('username', 'AldestaN'); 
-      Get.offAllNamed(AppRoutes.calculator); // <<< Navigasi HARUS terjadi
+      Get.offAllNamed(AppRoutes.loginapi);
     }
   }
 }

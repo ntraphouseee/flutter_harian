@@ -1,93 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:latihan/controller/loginapi_controller.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+
+  final LoginApiController loginC = Get.put(LoginApiController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF8F9FA),
+      backgroundColor: const Color(0xFFF8F9FA),
       appBar: AppBar(
-        title: Text(
-          "Profile",
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 24,
-            color: Color(0xFF1A202C),
-          ),
-        ),
+        title: const Text("Profile", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24)),
         backgroundColor: Colors.white,
         elevation: 0,
-        centerTitle: false,
-        iconTheme: IconThemeData(color: Color(0xFF4A5568)),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, size: 20),
-          onPressed: () => Get.back(),
-        ),
+        iconTheme: const IconThemeData(color: Colors.black),
+        leading: IconButton(icon: const Icon(Icons.arrow_back_ios), onPressed: () => Get.back()),
       ),
-      body: Center(
-        child: Container(
-          margin: EdgeInsets.all(24),
-          padding: EdgeInsets.all(32),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: Color(0xFF000000).withOpacity(0.08),
-                blurRadius: 20,
-                offset: Offset(0, 4),
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(24),
+            child: Container(
+              padding: const EdgeInsets.all(32),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 10)],
               ),
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Profile Photo
-              Container(
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Color(0xFFE2E8F0), width: 3),
-                ),
-                child: ClipOval(
-                  child: Container(
-                    color: Color(0xFFF7FAFC),
-                    child: Icon(
-                      Icons.person,
-                      size: 60,
-                      color: Color(0xFFA0AEC0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const CircleAvatar(radius: 60, backgroundColor: Colors.blueAccent, child: Icon(Icons.person, size: 70, color: Colors.white)),
+                  const SizedBox(height: 16),
+                  const Text("Aldestha Nendrayanto", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 8),
+                  const Text("11 PPLG 1", style: TextStyle(fontSize: 18, color: Colors.grey)),
+                  const SizedBox(height: 30),
+
+                  ElevatedButton.icon(
+                    onPressed: () => loginC.logout(), // ✅ sudah tidak error
+                    icon: const Icon(Icons.logout),
+                    label: const Text("Logout"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.redAccent,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     ),
                   ),
-                ),
+                ],
               ),
-
-              SizedBox(height: 24),
-
-              // Name
-              Text(
-                "Aldestha Nendrayanto",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF2D3748),
-                ),
-              ),
-
-              SizedBox(height: 8),
-
-              // Class
-              Text(
-                "11 PPLG 1",
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Color(0xFF718096),
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),

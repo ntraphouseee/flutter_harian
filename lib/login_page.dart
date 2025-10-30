@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:latihan/pages/calculator_page.dart';
 import 'package:latihan/widget/widget_button.dart';
 import 'package:latihan/widget/widget_textField.dart';
-import 'package:latihan/register_page.dart';
+import 'package:latihan/register.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RegisterPage()),
+                    MaterialPageRoute(builder: (context) => const Register()),
                   );
                 },
               ),
