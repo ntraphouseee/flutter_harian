@@ -10,7 +10,7 @@ class SplashscreenController extends GetxController {
   }
 
   Future<void> navigateFromSplash() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 5));
 
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token');
